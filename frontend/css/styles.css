@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 650px;
+  text-align: center;
+}
+
+h1 {
+  color: #2563eb;
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.tarjeta {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 30px;
+}
+
+h2 {
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+#resultado {
+  margin-top: 20px;
+  font-weight: bold;
+}

@@ -1,0 +1,26 @@
+# Dependencias de Node.js
+node_modules/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos de registro
+*.log
+logs/
+
+# Archivos temporales
+tmp/
+temp/
+
+# Archivos del editor
+.vscode/
+.idea/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Cobertura de pruebas
+coverage/
