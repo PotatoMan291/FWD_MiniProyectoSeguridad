@@ -5,30 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>SecureNotes</title>
-
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-
   <body>
     <main class="contenedor">
       <h1>SecureNotes</h1>
+      <p>Gestioná tus notas personales de forma segura.</p>
 
-      <p>
-        Sistema de notas personales con protección contra vulnerabilidades web.
-      </p>
+      <section id="authSection" class="tarjeta">
+        <h2>Acceso de usuarios</h2>
 
-      <div class="tarjeta">
-        <h2>Bienvenido a SecureNotes</h2>
+        <form id="authForm">
+          <input
+            type="text"
+            id="nombre"
+            placeholder="Nombre (solo para registro)"
+            maxlength="100"
+          />
 
-        <p>
-          Proyecto de seguridad web desarrollado con Node.js, Express y
-          PostgreSQL.
-        </p>
+          <input
+            type="email"
+            id="email"
+            placeholder="Correo electrónico"
+            required
+          />
 
-        <button id="btnVerificar">Verificar conexión con API</button>
+          <input
+            type="password"
+            id="password"
+            placeholder="Contraseña"
+            minlength="8"
+            required
+          />
 
-        <p id="resultado"></p>
-      </div>
+          <button type="submit" id="btnLogin">Iniciar sesión</button>
+
+          <button type="button" id="btnRegistro">Registrarse</button>
+        </form>
+      </section>
+
+      <section id="notasSection" class="oculto">
+        <div class="barra">
+          <h2>Mis notas</h2>
+          <button id="btnLogout">Cerrar sesión</button>
+        </div>
+
+        <div class="tarjeta">
+          <h3 id="formTitulo">Nueva nota</h3>
+
+          <form id="notaForm">
+            <input
+              type="text"
+              id="titulo"
+              placeholder="Título"
+              maxlength="150"
+              required
+            />
+
+            <textarea
+              id="contenido"
+              placeholder="Escribí tu nota"
+              maxlength="10000"
+              rows="5"
+            ></textarea>
+
+            <button type="submit" id="btnGuardar">Guardar nota</button>
+
+            <button type="button" id="btnCancelar" class="oculto">
+              Cancelar edición
+            </button>
+          </form>
+        </div>
+
+        <div id="listaNotas" class="lista-notas"></div>
+      </section>
+
+      <p id="resultado" role="status"></p>
     </main>
 
     <script src="js/app.js"></script>

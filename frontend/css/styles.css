@@ -1,64 +1,112 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background: #f3f6fb;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #1e293b;
 }
 
 .contenedor {
-  width: 90%;
-  max-width: 650px;
-  text-align: center;
+  width: 92%;
+  max-width: 850px;
+  margin: 45px auto;
 }
 
 h1 {
   color: #2563eb;
-  font-size: 42px;
-  margin-bottom: 15px;
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 8px;
 }
 
-p {
-  color: #475569;
-  line-height: 1.6;
-  margin-bottom: 15px;
+.contenedor > p {
+  text-align: center;
+  color: #64748b;
 }
 
 .tarjeta {
   background: white;
-  padding: 35px;
+  padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  margin-top: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin: 20px 0;
 }
 
-h2 {
-  color: #1e293b;
-  margin-bottom: 15px;
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 15px;
 }
 
 button {
+  padding: 11px 18px;
+  margin: 5px 5px 5px 0;
+  border: none;
+  border-radius: 7px;
   background: #2563eb;
   color: white;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 8px;
   cursor: pointer;
-  font-size: 15px;
 }
 
 button:hover {
   background: #1d4ed8;
 }
 
+#btnLogout,
+.btnEliminar {
+  background: #dc2626;
+}
+
+#btnCancelar {
+  background: #64748b;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lista-notas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.nota {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  overflow-wrap: anywhere;
+}
+
+.nota p {
+  color: #475569;
+  white-space: pre-wrap;
+}
+
+.oculto {
+  display: none !important;
+}
+
 #resultado {
-  margin-top: 20px;
   font-weight: bold;
+  min-height: 22px;
+}
+
+@media (max-width: 600px) {
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
