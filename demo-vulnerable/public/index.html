@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SecureNotes - Laboratorio SQL Injection</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 30px;
+        background: #f1f5f9;
+        color: #1e293b;
+        font-family: Arial, sans-serif;
+      }
+
+      .contenedor {
+        max-width: 1150px;
+        margin: auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #1d4ed8;
+      }
+
+      .descripcion {
+        text-align: center;
+        color: #64748b;
+      }
+
+      .control {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin: 25px 0;
+        box-shadow: 0 3px 12px #00000012;
+      }
+
+      input {
+        width: 100%;
+        padding: 13px;
+        font-size: 16px;
+        margin: 12px 0;
+        border: 1px solid #cbd5e1;
+        border-radius: 7px;
+      }
+
+      button {
+        border: none;
+        color: white;
+        background: #2563eb;
+        padding: 12px 17px;
+        border-radius: 7px;
+        cursor: pointer;
+        margin: 5px 5px 5px 0;
+      }
+
+      button:hover {
+        opacity: 0.88;
+      }
+
+      .btnAtaque {
+        background: #b45309;
+      }
+
+      .btnLimpiar {
+        background: #64748b;
+      }
+
+      .paneles {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .panel {
+        background: white;
+        padding: 22px;
+        border-radius: 12px;
+        min-width: 0;
+      }
+
+      .vulnerable {
+        border-top: 6px solid #dc2626;
+      }
+
+      .seguro {
+        border-top: 6px solid #16a34a;
+      }
+
+      .rojo {
+        color: #dc2626;
+      }
+
+      .verde {
+        color: #15803d;
+      }
+
+      pre {
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        min-height: 90px;
+      }
+
+      .resultado {
+        padding: 12px;
+        background: #f8fafc;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      .nota {
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 7px;
+        margin: 10px 0;
+      }
+
+      .nota h4 {
+        margin: 0 0 8px;
+      }
+
+      .nota p {
+        margin: 0;
+        color: #475569;
+      }
+
+      .aviso {
+        background: #fef3c7;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 800px) {
+        .paneles {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="contenedor">
+      <h1>SecureNotes - Laboratorio SQL Injection</h1>
+
+      <p class="descripcion">
+        Comparación entre una consulta SQL vulnerable y una consulta protegida.
+      </p>
+
+      <section class="control">
+        <h2>Simulación de ataque</h2>
+
+        <label for="busqueda"> Ingresá el título de una nota: </label>
+
+        <input type="text" id="busqueda" value="Proyecto" maxlength="200" />
+
+        <button id="btnNormal">Consulta normal</button>
+
+        <button id="btnAtaque" class="btnAtaque">Simular SQL Injection</button>
+
+        <button id="btnLimpiar" class="btnLimpiar">Limpiar</button>
+
+        <div class="aviso">
+          Laboratorio educativo. Utilizar exclusivamente en entorno local con
+          datos ficticios.
+        </div>
+      </section>
+
+      <section class="paneles">
+        <article class="panel vulnerable">
+          <h2 class="rojo">Versión vulnerable</h2>
+
+          <p>Consulta construida mediante concatenación.</p>
+
+          <h3>SQL ejecutado</h3>
+          <pre id="sqlVulnerable">Sin ejecutar</pre>
+
+          <h3>Resultado</h3>
+          <div id="resultadoVulnerable" class="resultado">Pendiente</div>
+        </article>
+
+        <article class="panel seguro">
+          <h2 class="verde">Versión protegida</h2>
+
+          <p>Consulta utilizando parámetros de PostgreSQL.</p>
+
+          <h3>SQL ejecutado</h3>
+          <pre id="sqlSeguro">Sin ejecutar</pre>
+
+          <h3>Resultado</h3>
+          <div id="resultadoSeguro" class="resultado">Pendiente</div>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
