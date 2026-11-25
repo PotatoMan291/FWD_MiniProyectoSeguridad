@@ -24,3 +24,6 @@ Thumbs.db
 
 # Cobertura de pruebas
 coverage/
+
+frontend-html-backup/
+frontend/dist/

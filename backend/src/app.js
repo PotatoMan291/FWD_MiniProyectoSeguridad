@@ -4,7 +4,6 @@ const express = require("express");
 const helmet = require("helmet");
 const session = require("express-session");
 const rateLimit = require("express-rate-limit");
-const path = require("path");
 
 const pool = require("./config/db");
 
@@ -20,6 +19,10 @@ const {
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
 
 // =====================================
 // 1. VERIFICAR CONFIGURACIÓN
@@ -152,6 +155,12 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok"
+  });
+});
+
 // =====================================
 // 8. PROTECCIÓN CSRF
 // =====================================
@@ -194,7 +203,7 @@ app.use("/api/notas", notasRoutes);
 // 11. FRONTEND
 // =====================================
 
-app.use(express.static(path.join(__dirname, "../../frontend")));
+
 
 // =====================================
 // 12. ERRORES
