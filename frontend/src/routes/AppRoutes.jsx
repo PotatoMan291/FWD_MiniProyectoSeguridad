@@ -4,6 +4,7 @@ import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import NotesPage from "../pages/NotesPage";
+import PerfilPage from "../pages/PerfilPage";
 
 import { api } from "../services/api";
 
@@ -51,6 +52,7 @@ export default function AppRoutes() {
 
       <Route element={<ProtectedRoute />}>
         <Route path="/notas" element={<NotesPage />} />
+        <Route path="/perfil" element={<PerfilPage />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

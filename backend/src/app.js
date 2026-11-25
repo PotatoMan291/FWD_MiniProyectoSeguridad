@@ -9,6 +9,8 @@ const pool = require("./config/db");
 
 const usuariosRoutes = require("./routes/usuariosRoutes");
 const notasRoutes = require("./routes/notasRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const perfilRoutes = require("./routes/perfilRoutes");
 
 const { verificarOrigen, configuracionCORS } = require("./config/corsConfig");
 
@@ -192,6 +194,10 @@ app.use(
   },
   usuariosRoutes,
 );
+
+app.use("/api/admin", adminRoutes);
+
+app.use("/api/perfil", perfilRoutes);
 
 // =====================================
 // 10. RUTAS DE NOTAS
