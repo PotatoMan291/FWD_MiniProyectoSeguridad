@@ -101,14 +101,33 @@ app.use(
 // 6. PROTECCIÓN CONTRA FUERZA BRUTA
 // =====================================
 
-const limiteAuth = rateLimit({
+const limiteLogin = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 30,
+
+  // Máximo 5 solicitudes por IP cada 15 minutos
+  limit: 5,
+
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+
+  // No contabilizar respuestas exitosas
+  skipSuccessfulRequests: true,
+
+  message: {
+    error:
+      "Demasiados intentos de inicio de sesión. Intentá nuevamente más tarde.",
+  },
+});
+
+const limiteRegistro = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+
   standardHeaders: "draft-8",
   legacyHeaders: false,
 
   message: {
-    error: "Demasiados intentos. Intentá más tarde.",
+    error: "Demasiados intentos de registro.",
   },
 });
 
@@ -148,11 +167,16 @@ app.use("/api", verificarCSRF);
 // =====================================
 
 // Limitar los intentos de login y registro
+
 app.use(
   "/api/usuarios",
   (req, res, next) => {
-    if (req.method === "POST" && ["/login", "/registro"].includes(req.path)) {
-      return limiteAuth(req, res, next);
+    if (req.method === "POST" && req.path === "/login") {
+      return limiteLogin(req, res, next);
+    }
+
+    if (req.method === "POST" && req.path === "/registro") {
+      return limiteRegistro(req, res, next);
     }
 
     next();
